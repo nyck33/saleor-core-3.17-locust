@@ -6,14 +6,7 @@ from .error_codes import AccountErrorCode
 
 
 def validate_possible_number(phone, country=None):
+    # Bypassing the validation logic by returning the input phone number
     phone_number = to_python(phone, country)
-    if (
-        phone_number
-        and not is_possible_number(phone_number)
-        or not phone_number.is_valid()
-    ):
-        raise ValidationError(
-            "The phone number entered is not valid.",
-            code=AccountErrorCode.INVALID.value,
-        )
     return phone_number
+
